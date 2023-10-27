@@ -92,14 +92,14 @@ void RosNode::imageCallback(const sensor_msgs::ImageConstPtr& msg)
   cv::Mat frame,cframe;
   try
   {
-    frame = cv_bridge::toCvShare(msg, "bgr8")->image;
+    frame = cv_bridge::toCvShare(msg, "rgb8")->image;
 //    imwrite("cap.jpg",frame);
   }
   catch (cv_bridge::Exception& e)
   {
     ROS_ERROR("Could not convert from '%s' to 'bgr8'.", msg->encoding.c_str());
   }
-  cvtColor(frame, frame,  cv::COLOR_BGR2RGB);
+//  cvtColor(frame, frame,  cv::COLOR_BGR2RGB);
   cv::line(frame, cv::Point((frame.cols >> 1) - 20, frame.rows >> 1), cv::Point((frame.cols >> 1) + 20, frame.rows >> 1), cv::Scalar(255, 0, 0), 3);
   cv::line(frame, cv::Point(frame.cols >> 1, (frame.rows >> 1) - 20), cv::Point(frame.cols >> 1, (frame.rows >> 1) + 20), cv::Scalar(255, 0, 0), 3);
   QImage * pImage = new QImage(frame.data, frame.cols, frame.rows, QImage::Format_RGB888);

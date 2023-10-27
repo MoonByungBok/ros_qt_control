@@ -10,7 +10,6 @@ TurtlebotControl::TurtlebotControl(int argc, char **argv, QWidget *parent) :
     prosNode->pLcamView = ui->pLcamView;
     prosNode->start();
 
-
     connect(prosNode, SIGNAL(rosShutdown()), this, SLOT(close()));
 }
 
