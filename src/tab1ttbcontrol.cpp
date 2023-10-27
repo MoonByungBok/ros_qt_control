@@ -9,6 +9,7 @@ Tab1TTBControl::Tab1TTBControl(int argc, char **argv, QWidget *parent) :
     prosNode = new RosNode(argc, argv);
     prosNode->pLcamView = ui->pLcamView;
     prosNode->start();
+
     connect(ui->pPButtonGO,SIGNAL(clicked()),this,SLOT(goal_Pub()));
     connect(ui->pPBFront,SIGNAL(clicked()),this,SLOT(goal_Pub_Front()));
     connect(ui->pPBLiving,SIGNAL(clicked()),this,SLOT(goal_Pub_Living()));

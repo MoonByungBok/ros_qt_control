@@ -19,6 +19,9 @@ MainWidget::MainWidget(int argc, char **argv, QWidget *parent)
     pTab2SocketClient = new Tab2SocketClient(argc, argv, ui->pTab2);
     ui->pTab2->setLayout(pTab2SocketClient->layout());
 
+    pTurtlebotControl = new TurtlebotControl(argc, argv, ui->pTab3);
+    ui->pTab3->setLayout(pTurtlebotControl->layout());
+
     connect(pTab2SocketClient,SIGNAL(goGoalSig(double, double, double, double)),pTab1TTBControl,SLOT(goal_PubSlot(double, double, double, double)));
 }
 

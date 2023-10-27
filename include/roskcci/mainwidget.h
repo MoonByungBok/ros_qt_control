@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "tab1ttbcontrol.h"
 #include "tab2socketclient.h"
+#include "turtlebotcontrol.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWidget; }
@@ -20,6 +21,7 @@ private:
     Ui::MainWidget* ui;
     Tab1TTBControl* pTab1TTBControl;
     Tab2SocketClient* pTab2SocketClient;
+    TurtlebotControl* pTurtlebotControl;
 
 };
 #endif // MAINWIDGET_H

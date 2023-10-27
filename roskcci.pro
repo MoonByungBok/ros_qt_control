@@ -18,11 +18,14 @@ HEADERS += include/roskcci/mainwidget.h \
            include/roskcci/rosnode.h \
            include/roskcci/socketclient.h \
            include/roskcci/tab1ttbcontrol.h \
-           include/roskcci/tab2socketclient.h
-FORMS += ui/mainwidget.ui ui/tab1ttbcontrol.ui ui/tab2socketclient.ui
+           include/roskcci/tab2socketclient.h \
+           include/roskcci/turtlebotcontrol.h \
+FORMS += ui/mainwidget.ui ui/tab1ttbcontrol.ui ui/tab2socketclient.ui \
+         ui/turtlebotcontrol.ui
 SOURCES += src/main.cpp \
            src/mainwidget.cpp \
            src/rosnode.cpp \
            src/socketclient.cpp \
            src/tab1ttbcontrol.cpp \
-           src/tab2socketclient.cpp
+           src/tab2socketclient.cpp \
+           src/turtlebotcontrol.cpp \
