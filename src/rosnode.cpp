@@ -75,7 +75,6 @@ void RosNode::go_goal(QString frame, double x, double y, double z, double w) {
 
 void RosNode::LDSMsgCallback(const sensor_msgs::LaserScan::ConstPtr &msg)
 {
-
   float scanData[4];
   scanData[0] = msg->ranges[0];
   scanData[1] = msg->ranges[90];
@@ -88,7 +87,6 @@ void RosNode::LDSMsgCallback(const sensor_msgs::LaserScan::ConstPtr &msg)
 
 void RosNode::imageCallback(const sensor_msgs::ImageConstPtr& msg)
 {
-
   cv::Mat frame,cframe;
   try
   {

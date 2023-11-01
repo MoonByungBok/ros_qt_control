@@ -21,7 +21,6 @@ Tab1TTBControl::Tab1TTBControl(int argc, char **argv, QWidget *parent) :
 
 Tab1TTBControl::~Tab1TTBControl()
 {
-
     delete ui;
 }
 void Tab1TTBControl::goal_Pub()

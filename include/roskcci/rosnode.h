@@ -31,6 +31,7 @@ public:
     void LDSMsgCallback(const sensor_msgs::LaserScan::ConstPtr &msg);
     void imageCallback(const sensor_msgs::ImageConstPtr& msg);
 
+
 private:
     int init_argc;
     char **init_argv;
@@ -39,6 +40,7 @@ private:
     ros::Publisher goal_pub;
     ros::Subscriber lds_sub;
     ros::Subscriber image_sub;
+
 
 public:
     QLabel* pLcamView;
