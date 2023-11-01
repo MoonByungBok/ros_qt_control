@@ -17,17 +17,28 @@ TurtlebotControl::TurtlebotControl(int argc, char **argv, QWidget *parent) :
     cmd_vel_pub_ = nh_.advertise<geometry_msgs::Twist>("/cmd_vel", 1);
 
 
-    //connect(ui->pPBtracking, SIGNAL(clicked()), this, SLOT())
+    connect(ui->pPBtracking, SIGNAL(clicked()), this, SLOT(trackingMod()));
     connect(ui->pPBfront,SIGNAL(clicked()),this,SLOT(move_Pub_Front()));
     connect(ui->pPBback,SIGNAL(clicked()),this,SLOT(move_Pub_Back()));
     connect(ui->pPBleft,SIGNAL(clicked()),this,SLOT(move_Pub_Left()));
     connect(ui->pPBright,SIGNAL(clicked()),this,SLOT(move_Pub_Right()));
-    connect(prosNode, SIGNAL(rosShutdown()), this, SLOT(close()));
+
+    connect(this,SIGNAL(KeyControlfront()),this,SLOT(move_Pub_Front()));
+    connect(this,SIGNAL(KeyControlback()),this,SLOT(move_Pub_Back()));
+    connect(this,SIGNAL(KeyControlleft()),this,SLOT(move_Pub_Left()));
+    connect(this,SIGNAL(KeyControlright()),this,SLOT(move_Pub_Right()));
+
+    connect(prosNode, SIGNAL(rosShutdown()), this, SLOT(close()));    
 }
 
 TurtlebotControl::~TurtlebotControl()
 {
     delete ui;
+}
+
+void TurtlebotControl::trackingMod()
+{
+    setFocus(); // 포커스 설정
 }
 
 void TurtlebotControl::move_Pub_Front()
@@ -86,4 +97,26 @@ void TurtlebotControl::move_where(int strMove)
     cmd_vel_pub_.publish(base_cmd); // base_cmd를 퍼블리시
 }
 
+void TurtlebotControl::keyPressEvent(QKeyEvent *event)
+{
+    if(ui->pPBtracking->isChecked())
+    {
+        if(event->key() == Qt::Key_Up)
+        {
+            emit KeyControlfront();
+        }
+        else if(event->key() == Qt::Key_Down)
+        {
+            emit KeyControlback();
+        }
+        else if(event->key() == Qt::Key_Left)
+        {
+            emit KeyControlleft();
+        }
+        else if(event->key() == Qt::Key_Right)
+        {
+            emit KeyControlright();
+        }
+    }
+}
 

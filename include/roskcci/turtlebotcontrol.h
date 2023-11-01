@@ -7,6 +7,7 @@
 #include <iostream>
 #include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
+#include <QKeyEvent>
 
 namespace Ui {
 class TurtlebotControl;
@@ -28,8 +29,17 @@ private:
     ros::Publisher cmd_vel_pub_;
     bool isFB = true;
     void move_where(int);
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
+
+signals:
+    void KeyControlfront();
+    void KeyControlback();
+    void KeyControlleft();
+    void KeyControlright();
 
 private slots:
+    void trackingMod();
     void move_Pub_Front();
     void move_Pub_Left();
     void move_Pub_Right();
